@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Example_Sqlite_DB_Code_Slides.Pages.NewOrderPage"
+             Title="NewOrderPage">
+    <VerticalStackLayout MaximumWidthRequest="640" Padding="20" Spacing="10">
+        <Label Text="Add New Order" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" />
+        <Label Text="Error: All fields must be filled." x:Name="lblError" IsVisible="false" HorizontalOptions="Center" FontSize="15" TextColor="#ffaaaa" />
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtItemName" Placeholder="Item Name" />
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Quantity: " VerticalOptions="Center"/>
+            <Entry Text="{Binding Value}" MinimumWidthRequest="65" BindingContext="{x:Reference sliderQuantity}" VerticalOptions="Center"/>
+            <Stepper Minimum="1" Maximum="10000" MinimumWidthRequest="200" x:Name="sliderQuantity" />
+        </HorizontalStackLayout>
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtColor" Placeholder="Color" />
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtAmount" Placeholder="Amount ($)" />
+        
+        <Button Text="Submit" Clicked="SubmitOrder"/>
+    </VerticalStackLayout>
+</ContentPage>

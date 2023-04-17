@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Example_Sqlite_DB_Code_Slides.Pages.NewCustomerPage"
+             Title="NewCustomerPage">
+    <VerticalStackLayout MaximumWidthRequest="640" Padding="20" Spacing="10">
+        <Label Text="Add New Customer" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" />
+        <Label Text="Error: All fields must be filled." x:Name="lblError" IsVisible="false" HorizontalOptions="Center" FontSize="15" TextColor="#ffaaaa" />
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtFName" Placeholder="First Name" />
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtLName" Placeholder="Last Name" />
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtAddress1" Placeholder="Address Line 1" />
+        <Entry BackgroundColor="White" TextColor="Black" x:Name="txtAddress2" Placeholder="Address Line 2" />
+        <HorizontalStackLayout Spacing="20">
+            <Entry BackgroundColor="White" TextColor="Black" x:Name="txtCity" Placeholder="City" MinimumWidthRequest="160"/>
+            <Picker x:Name="pckState" MinimumWidthRequest="160" />
+            <Entry BackgroundColor="White" TextColor="Black" x:Name="txtZip" Placeholder="Zip Code" MinimumWidthRequest="160"/>
+        </HorizontalStackLayout>
+        <Button Text="Submit" Clicked="SubmitCustomerInfo"/>
+    </VerticalStackLayout>
+</ContentPage>

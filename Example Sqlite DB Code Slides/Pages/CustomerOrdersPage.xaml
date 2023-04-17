@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Example_Sqlite_DB_Code_Slides.Pages.CustomerOrdersPage"
+             Title="CustomerOrdersPage">
+    <Grid RowDefinitions="50, 50, *, 70">
+        <HorizontalStackLayout  Grid.Row="0" Spacing="10">
+            <Label Text="Showing Orders for Customer: " FontSize="Title" HorizontalOptions="Center"/>
+            <Label Text="" FontSize="Title" HorizontalOptions="Center" x:Name="lblCustomerName"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="1">
+            <Label Text="Search: "    VerticalOptions="Center" FontSize="15" />
+            <Entry x:Name="txtFilter" Placeholder="SearchItem" TextChanged="FilterCustomers" MinimumWidthRequest="200" FontSize="12" HeightRequest="15"/>
+        </HorizontalStackLayout>
+        <CollectionView x:Name="collectionCustomerOrders" Grid.Row="2" BackgroundColor="#999999" Margin="10, 10, 10, 10" SelectionMode="Single" SelectionChanged="ToggleCommands">
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="*, *, *, *" BackgroundColor="#CCCCCC" Padding="0, 5, 0, 5">
+                    <Label HorizontalTextAlignment="Center" Grid.Column="0" Text="Item" TextColor="#000000" FontAttributes="Bold"/>
+                    <Label HorizontalTextAlignment="Center" Grid.Column="1" Text="Quantity" TextColor="#000000"  FontAttributes="Bold"/>
+                    <Label HorizontalTextAlignment="Center" Grid.Column="2" Text="Color" TextColor="#000000"       FontAttributes="Bold"/>
+                    <Label HorizontalTextAlignment="Center" Grid.Column="3" Text="Cost" TextColor="#000000"      FontAttributes="Bold"/>
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*, *, *, *" >
+                        <Label HorizontalTextAlignment="Center" Grid.Column="0" Text="{Binding Item}" TextColor="#000000" />
+                        <Label HorizontalTextAlignment="Center" Grid.Column="1" Text="{Binding Quantity}" TextColor="#000000" />
+                        <Label HorizontalTextAlignment="Center" Grid.Column="2" Text="{Binding Color}"  TextColor="#000000" />
+                        <Label HorizontalTextAlignment="Center" Grid.Column="3" Text="{Binding TotalCost}" TextColor="#000000" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout Grid.Row="3" Padding="10">
+            <HorizontalStackLayout x:Name="layoutOrderCommands">
+                <Button Text="Edit Order" Clicked="EditOrder"/>
+            </HorizontalStackLayout>
+            <Button Text="Add New Order" Clicked="ShowAddNewOrderForm"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
